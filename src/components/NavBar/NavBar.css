@@ -1,0 +1,9 @@
+.logo-icon{
+    color: #F8A42A;
+}
+
+.navbar-container{
+    display: grid;
+    gap: 5px;
+    grid-template-rows: repeat(auto-fill, minmax(20px, 1fr));
+}
