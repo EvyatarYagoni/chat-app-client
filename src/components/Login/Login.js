@@ -15,12 +15,12 @@ export default function Login() {
                         <span>in a while - your friends at chat.</span>
                     </p>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: '30px' }}>
-                        <AccountCircle sx={{ color: 'action.active', mr: 0.5, my: 0.2 }} />
-                        <TextField fullWidth id="standard-basic" label="Email" variant="standard" />
+                        <AccountCircle sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }}/>
+                        <TextField fullWidth id="standard-basic" label="Email" variant="standard" color="warning"/>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <AccountCircle sx={{ color: 'action.active', mr: 0.5, my: 0.2 }} />
-                        <TextField fullWidth id="standard-basic" label="Password" variant="standard" type="password" />
+                        <AccountCircle sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }} />
+                        <TextField fullWidth id="standard-basic" label="Password" variant="standard" type="password" color="warning" />
                     </Box>
                 </div>
             </Paper>
