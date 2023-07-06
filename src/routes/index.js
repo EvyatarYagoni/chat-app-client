@@ -1,5 +1,7 @@
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
+import Login from "../components/Login/Login";
+import Signup from "../components/Signup/Signup";
 
 
 const routes= [
@@ -8,8 +10,12 @@ const routes= [
         element: <Home />,
     },
     {
-        path: '/sf',
-        element: <Home />,
+        path: '/login',
+        element: <Login />,
+    },
+    {
+        path: '/signup',
+        element: <Signup />,
     },
     {
         path: '/about',

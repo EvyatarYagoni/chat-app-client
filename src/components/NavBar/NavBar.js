@@ -13,9 +13,14 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function NavBar() {
     return (
         <div className='navbar-container'>
-            <h1 style={{backgroundColor: 'red'}}>1</h1>
-            <h1 style={{backgroundColor: 'blue'}}>1</h1>
-            <h1 style={{backgroundColor: 'yellow'}}>1</h1>
+            <div className='navbar-logo-wrapper'>
+                <h1 style={{backgroundColor: 'red'}}>1</h1>
+            </div>
+
+            <div className='navbar-buttons'>
+                <h1 style={{backgroundColor: 'blue'}}>1</h1>
+                <h1 style={{backgroundColor: 'yellow'}}>1</h1>
+            </div>
         </div>
     )
 }

@@ -4,9 +4,13 @@
     padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   padding: 1%;
-  background: linear-gradient(to bottom, #f2f2f2, #ffffff);
+  font-family: roboto, sans-serif;
+  background: linear-gradient(to bottom, #f2f2f2, #ffffff) no-repeat;
 }

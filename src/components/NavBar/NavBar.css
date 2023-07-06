@@ -1,9 +1,21 @@
 .logo-icon{
     color: #F8A42A;
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navbar-container{
-    display: grid;
-    gap: 5px;
-    grid-template-rows: repeat(auto-fill, minmax(20px, 1fr));
+   display: flex;
+    flex-wrap: wrap;
+}
+
+.navbar-logo-wrapper {
+    margin-right: auto;
+    background-color: red;
+}
+.navbar-buttons {
+    display: flex;
+    column-gap: 12px;
 }
