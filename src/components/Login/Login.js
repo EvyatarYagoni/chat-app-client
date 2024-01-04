@@ -1,12 +1,27 @@
 import './Login.css';
 import Paper from "@mui/material/Paper";
 import {AccountCircle} from "@mui/icons-material";
-import {Box, FilledInput, FormControl, InputAdornment, InputLabel, OutlinedInput, TextField} from "@mui/material";
+import {
+    Box,
+    Button,
+    FilledInput,
+    FormControl,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+    TextField
+} from "@mui/material";
 import {useState} from "react";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const loginHandler = () => {
+        console.log('loginHandler');
+        console.log(email);
+        console.log(password)
+    }
 
     return (
         <div className='login-container'>
@@ -42,6 +57,7 @@ export default function Login() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Box>
+                    <Button sx={{ mt: '40px' }} variant="contained" onClick={loginHandler}>Sign in</Button>
                 </div>
             </Paper>
         </div>
