@@ -29,9 +29,9 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const loginHandler = async () => {
+  const signupHandler = async () => {
     try {
-      return await axios.post(`${process.env.REACT_APP_SERVER_API_URL}/auth/login`, {
+      return await axios.post(`${process.env.REACT_APP_SERVER_API_URL}/auth/signup`, {
         email: email,
         password: password
       });
@@ -42,12 +42,12 @@ export default function Signup() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className='login-container'>
-        <Paper elevation={3} className='login-box'>
+      <div className='signup-container'>
+        <Paper elevation={3} className='signup-box'>
           <p className="signup-title">
             <span>Create a free account now</span>
           </p>
-          <div className='login-action-buttons'>
+          <div className='signup-action-buttons'>
             <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: '30px' }}>
               <AccountCircle sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }}/>
               <TextField
@@ -84,7 +84,8 @@ export default function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Box>
-            <Button sx={{ mt: '40px' }} variant="contained" onClick={loginHandler} color='ochre'>Sign in</Button>
+            <Button sx={{ mt: '40px' }} variant="contained" onClick={signupHandler} color='ochre'>Sign Up</Button>
+            <p className='sign-up-text'>Already have an account? <Link to='/login'>Sign in</Link></p>
           </div>
         </Paper>
       </div>
