@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import './Header.css';
+import './Header.scss';
 
 export default function Header() {
   return (
