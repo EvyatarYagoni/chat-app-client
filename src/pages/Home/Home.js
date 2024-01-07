@@ -4,12 +4,12 @@ import ChatWindow from "../../components/ChatWindow/ChatWindow";
 
 export default function Home() {
     return (
-        <Grid container style={{height: '100%'}}>
+        <Grid container style={{height: '96vh'}}>
             <Grid item xs={4}>
                 <SideBar/>
             </Grid>
-            <Grid item xs={8}>
-                <ChatWindow/>
+            <Grid item xs={8} >
+                <ChatWindow />
             </Grid>
         </Grid>
     )
