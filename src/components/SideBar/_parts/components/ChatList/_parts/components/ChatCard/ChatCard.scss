@@ -1,0 +1,30 @@
+.sidebar-chat-card-container{
+    display: flex;
+    padding: 0.5rem 10px;
+    border-top: 2px solid #FBFBFB;
+
+    .chat-card-time{
+        margin-left: auto;
+        color: #BFC2C4;
+        font-size: 14px;
+    }
+
+    .chat-card-img-and-text{
+        display: flex;
+        margin-left: 10px;
+        flex: 1;
+
+        .chat-card-text{
+            margin-left: 10px;
+            flex: 1;
+
+            .chat-card-last-message{
+                color: #BFC2C4;
+                font-size: 14px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

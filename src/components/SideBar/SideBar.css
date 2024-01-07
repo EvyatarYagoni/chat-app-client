@@ -1,4 +1,5 @@
 .sidebar-container {
     border: 1px solid green;
+    border-right: 1px solid #FBFBFB;
     height: 100%;
 }
