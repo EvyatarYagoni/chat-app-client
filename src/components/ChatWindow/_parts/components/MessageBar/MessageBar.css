@@ -1,3 +1,23 @@
 .chat-message-bar-container{
     height: 6%;
+    background-color: #EDEFEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .input{
+        width: 90%;
+        border: none;
+        outline: none;
+        font-size: 1.2rem;
+        border-radius: 20px;
+        height: 70%;
+        background: #FFFFFF;
+        padding: 0 20px;
+
+        &::placeholder {
+            color: #BFC2C4;
+            font-size: 16px;
+        }
+    }
 }
