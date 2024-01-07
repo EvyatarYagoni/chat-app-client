@@ -4,14 +4,19 @@ import {AccountCircle} from "@mui/icons-material";
 import {
     Box,
     Button,
-    FilledInput,
-    FormControl,
-    InputAdornment,
-    InputLabel,
-    OutlinedInput,
-    TextField
+    createTheme,
+    TextField,
+    ThemeProvider
 } from "@mui/material";
 import {useState} from "react";
+const theme = createTheme({
+    palette: {
+        ochre: {
+            main: '#25D366',
+            contrastText: '#fff',
+        },
+    },
+});
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -24,6 +29,7 @@ export default function Login() {
     }
 
     return (
+      <ThemeProvider theme={theme}>
         <div className='login-container'>
             <Paper elevation={3} className='login-box'>
                 <h1 className="login-title">Login</h1>
@@ -38,9 +44,9 @@ export default function Login() {
                             fullWidth
                             label="Email"
                             variant="standard"
-                            color="warning"
                             value={email}
                             type={'email'}
+                            color='ochre'
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </Box>
@@ -51,14 +57,15 @@ export default function Login() {
                             label="Password"
                             variant="standard"
                             type="password"
-                            color="warning"
                             value={password}
+                            color='ochre'
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Box>
-                    <Button sx={{ mt: '40px' }} variant="contained" onClick={loginHandler}>Sign in</Button>
+                    <Button sx={{ mt: '40px' }} variant="contained" onClick={loginHandler} color='ochre'>Sign in</Button>
                 </div>
             </Paper>
         </div>
+      </ThemeProvider>
     )
 }
