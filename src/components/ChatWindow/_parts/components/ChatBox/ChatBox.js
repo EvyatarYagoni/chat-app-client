@@ -1,7 +1,4 @@
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import './ChatBox.css';
+import './ChatBox.scss';
 
 export default function ChatBox() {
   return (
