@@ -1,6 +1,9 @@
-import './Login.css';
+import './Login.scss';
 import Paper from "@mui/material/Paper";
 import {AccountCircle} from "@mui/icons-material";
+import LockIcon from '@mui/icons-material/Lock';
+import EmailIcon from '@mui/icons-material/Email';
+
 import {
     Box,
     Button,
@@ -9,6 +12,9 @@ import {
     ThemeProvider
 } from "@mui/material";
 import {useState} from "react";
+import axios from "axios";
+import {Link} from "react-router-dom";
+
 const theme = createTheme({
     palette: {
         ochre: {
@@ -22,10 +28,15 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const loginHandler = () => {
-        console.log('loginHandler');
-        console.log(email);
-        console.log(password)
+    const loginHandler = async () => {
+        try {
+            return await axios.post(`${process.env.REACT_APP_SERVER_API_URL}/auth/login`, {
+                email: email,
+                password: password
+            });
+        }  catch (err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -39,7 +50,7 @@ export default function Login() {
                         <span>in a while - your friends at chat.</span>
                     </p>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: '30px' }}>
-                        <AccountCircle sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }}/>
+                        <EmailIcon sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }}/>
                         <TextField
                             fullWidth
                             label="Email"
@@ -51,7 +62,7 @@ export default function Login() {
                         />
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <AccountCircle sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }} />
+                        <LockIcon sx={{ color: '#9B9B9B', mr: 0.5, my: 0.2 }} />
                         <TextField
                             fullWidth
                             label="Password"
