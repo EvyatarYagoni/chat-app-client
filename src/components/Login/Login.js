@@ -74,6 +74,7 @@ export default function Login() {
                         />
                     </Box>
                     <Button sx={{ mt: '40px' }} variant="contained" onClick={loginHandler} color='ochre'>Sign in</Button>
+                    <p className='sign-up-text'>Don't have an account? <Link to='/signup'>Sign up</Link></p>
                 </div>
             </Paper>
         </div>
