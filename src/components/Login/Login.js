@@ -25,7 +25,6 @@ export default function Login() {
 
     return (
         <div className='login-container'>
-            <img src={process.env.PUBLIC_URL + '/favicon.png'}  alt="logo" className='logo-icon'/>
             <Paper elevation={3} className='login-box'>
                 <h1 className="login-title">Login</h1>
                 <div className='login-action-buttons'>
