@@ -1,10 +1,13 @@
-import './SearchBar.css';
-
+import './SearchBar.scss';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function SearchBar() {
     return (
         <div className='sidebar-searchbar-container'>
-            search bar
+            <div className='sidebar-searchbar-input-container'>
+              <SearchIcon className='search-icon'/>
+              <input className='searchbar-input' placeholder="Search"/>
+            </div>
         </div>
     )
 }
