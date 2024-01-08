@@ -8,17 +8,14 @@ const publicRoutes = [
     {
         path: '/login',
         element: <Login />,
-        isProtected: false
     },
     {
         path: '/signup',
         element: <Signup />,
-        isProtected: false
     },
     {
         path: '/*',
         element: <h1>404</h1>,
-        isProtected: false
     },
 ];
 
@@ -30,7 +27,6 @@ const protectedRoutes= [
     {
         path: '/about',
         element: <About />,
-        isProtected: false
     }
 ];
 
