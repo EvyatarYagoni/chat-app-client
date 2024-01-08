@@ -4,27 +4,34 @@ import Login from "../components/Login/Login";
 import Signup from "../components/Signup/Signup";
 
 
-const routes= [
+const publicRoutes = [
+    {
+        path: '/login',
+        element: <Login />,
+        isProtected: false
+    },
+    {
+        path: '/signup',
+        element: <Signup />,
+        isProtected: false
+    },
+    {
+        path: '/*',
+        element: <h1>404</h1>,
+        isProtected: false
+    },
+];
+
+const protectedRoutes= [
     {
         path: '/',
         element: <Home />,
     },
     {
-        path: '/login',
-        element: <Login />,
-    },
-    {
-        path: '/signup',
-        element: <Signup />,
-    },
-    {
         path: '/about',
         element: <About />,
-    },
-    {
-        path: '/*',
-        element: <h1>404</h1>,
-    },
+        isProtected: false
+    }
 ];
 
-export default routes;
+export {publicRoutes, protectedRoutes};

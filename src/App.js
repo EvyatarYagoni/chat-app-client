@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-import routes from "./routes/index";
+import {publicRoutes, protectedRoutes} from "./routes/index";
 import {Helmet} from "react-helmet";
+import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
 
 
 function App() {
@@ -18,11 +19,16 @@ function App() {
 
         </Helmet>
         <Routes>
-            {
-                routes.map((route, index) => (
-                <Route key={index} path={route.path} element={route.element} />
-                ))
-            }
+          <Route element={<ProtectedRoutes isAllowed={false} />}>
+            {protectedRoutes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element}/>
+            ))}
+          </Route>
+          <Route>
+            {publicRoutes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element}/>
+            ))}
+          </Route>
         </Routes>
     </BrowserRouter>
   );
