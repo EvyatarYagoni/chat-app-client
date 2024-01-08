@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {publicRoutes, protectedRoutes} from "./routes/index";
 import {Helmet} from "react-helmet";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
