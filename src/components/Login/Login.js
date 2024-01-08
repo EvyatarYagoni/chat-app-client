@@ -1,6 +1,5 @@
 import './Login.scss';
 import Paper from "@mui/material/Paper";
-import {AccountCircle} from "@mui/icons-material";
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import axiosInstance  from "../../config/axios/axiosInstance";
@@ -13,7 +12,6 @@ import {
     ThemeProvider
 } from "@mui/material";
 import {useState} from "react";
-import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 
 const theme = createTheme({
