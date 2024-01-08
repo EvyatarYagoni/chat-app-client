@@ -3,6 +3,9 @@ import Paper from "@mui/material/Paper";
 import {AccountCircle} from "@mui/icons-material";
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
+import {useNavigate} from "react-router-dom";
+import axiosInstance  from "../../config/axios/axiosInstance";
+
 
 import {
   Box,
@@ -28,16 +31,28 @@ export default function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const signupHandler = async () => {
     try {
-      return await axios.post(`${process.env.REACT_APP_SERVER_API_URL}/auth/signup`, {
+      console.log(document.cookie);
+
+      return;
+      await axiosInstance.post('/auth/signup', {
+        username: username,
         email: email,
         password: password
       });
+
+      return redirectToHomePage();
+
     }  catch (err) {
       console.log(err);
     }
+  }
+
+  const redirectToHomePage = () => {
+    navigate('/');
   }
 
   return (
@@ -54,8 +69,8 @@ export default function Signup() {
                 fullWidth
                 label="username"
                 variant="standard"
-                value={email}
-                type={'username'}
+                value={username}
+                type='text'
                 color='ochre'
                 onChange={(e) => setUsername(e.target.value)}
               />
