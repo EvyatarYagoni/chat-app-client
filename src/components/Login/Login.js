@@ -28,12 +28,16 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const loginHandler = async () => {
+    const loginHandler = async (event) => {
         try {
-            await axiosInstance.post('/auth/login', {
+            event.preventDefault();
+            const response = await axiosInstance.post('/auth/login', {
                 email: email,
                 password: password
             });
+
+            console.log('response', response);
+            // dispatch({})
 
             return redirectToHomePage();
         }  catch (err) {
