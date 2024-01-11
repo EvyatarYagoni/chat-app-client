@@ -1,9 +1,12 @@
 import {Navigate, Outlet} from "react-router-dom";
+import {useSelector} from "react-redux";
 
-const ProtectedRoutes = ({ isAllowed, redirectPath = '/login' }) => {
-  console.log(isAllowed);
-  if (!isAllowed) {
-    return <Navigate to={redirectPath} replace />;
+const ProtectedRoutes = () => {
+  console.log('ProtectedRoutes');
+  const user = useSelector(state => state.user.value);
+  console.log('user', user);
+  if (!user) {
+    return <Navigate to={'/login'} replace />;
   }
 
   return <Outlet />;
