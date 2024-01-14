@@ -4,6 +4,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import axiosInstance  from "../../config/axios/axiosInstance";
 
+
 import {
     Box,
     Button,
@@ -11,8 +12,10 @@ import {
     TextField,
     ThemeProvider
 } from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {setAccessToken, setUser} from "../../store/slices/auth/authSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 const theme = createTheme({
     palette: {
@@ -27,6 +30,10 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const user = useSelector(state => state.auth.user);
+    const accessToken = useSelector(state => state.auth.accessToken);
 
     const loginHandler = async (event) => {
         try {
@@ -36,8 +43,10 @@ export default function Login() {
                 password: password
             });
 
-            console.log('response', response);
-            // dispatch({})
+            const accessToken = response.data.accessToken;
+
+            dispatch(setAccessToken(accessToken));
+            dispatch(setUser({name: "evyatar"}));
 
             return redirectToHomePage();
         }  catch (err) {
@@ -49,6 +58,12 @@ export default function Login() {
         console.log('redirecting');
         navigate('/');
     }
+
+    useEffect(() => {
+        if (user && accessToken) {
+            redirectToHomePage();
+        }
+    }, [user, accessToken]);
 
     return (
       <ThemeProvider theme={theme}>

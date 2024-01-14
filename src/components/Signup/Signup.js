@@ -14,8 +14,9 @@ import {
   TextField,
   ThemeProvider
 } from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const theme = createTheme({
   palette: {
@@ -31,12 +32,13 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const user = useSelector(state => state.auth.user);
+  const accessToken = useSelector(state => state.auth.accessToken);
+
 
   const signupHandler = async () => {
     try {
-      console.log(document.cookie);
 
-      return;
       await axiosInstance.post('/auth/signup', {
         username: username,
         email: email,
@@ -53,6 +55,12 @@ export default function Signup() {
   const redirectToHomePage = () => {
     navigate('/');
   }
+
+  useEffect(() => {
+    if (user && accessToken) {
+      redirectToHomePage();
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
