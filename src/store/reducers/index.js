@@ -1,8 +1,8 @@
 // Import other reducers as needed
-import userReducer  from '../slices/user/userSlice';
+import authReducer  from '../slices/auth/authSlice';
 
 const reducers = {
   // Add other reducers here
-  user: userReducer,
+  auth: authReducer
 }
 export default reducers;
