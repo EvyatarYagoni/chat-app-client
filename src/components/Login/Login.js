@@ -16,6 +16,7 @@ import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {setAccessToken, setUser} from "../../store/slices/auth/authSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {APP_ROUTES} from "../../utils/constants";
 
 const theme = createTheme({
     palette: {
@@ -30,10 +31,6 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    const user = useSelector(state => state.auth.user);
-    const accessToken = useSelector(state => state.auth.accessToken);
 
     const loginHandler = async (event) => {
         try {
@@ -43,27 +40,17 @@ export default function Login() {
                 password: password
             });
 
-            const accessToken = response.data.accessToken;
+            saveTokenOnLocalStorage(response.data.accessToken);
 
-            dispatch(setAccessToken(accessToken));
-            dispatch(setUser({name: "evyatar"}));
-
-            return redirectToHomePage();
+            return navigate(APP_ROUTES.HOME);
         }  catch (err) {
             console.log(err);
         }
     }
 
-    const redirectToHomePage = () => {
-        console.log('redirecting');
-        navigate('/');
+    const saveTokenOnLocalStorage = (accessToken) => {
+        localStorage.setItem('accessToken', accessToken);
     }
-
-    useEffect(() => {
-        if (user && accessToken) {
-            redirectToHomePage();
-        }
-    }, [user, accessToken]);
 
     return (
       <ThemeProvider theme={theme}>
