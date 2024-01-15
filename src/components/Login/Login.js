@@ -12,10 +12,8 @@ import {
     TextField,
     ThemeProvider
 } from "@mui/material";
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {setAccessToken, setUser} from "../../store/slices/auth/authSlice";
-import {useDispatch, useSelector} from "react-redux";
 import {APP_ROUTES} from "../../utils/constants";
 
 const theme = createTheme({
