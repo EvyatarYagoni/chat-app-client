@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {publicRoutes, protectedRoutes} from "./routes/index";
 import {Helmet} from "react-helmet";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
+import PublicRoutes from "./components/PublicRoute/PublicRoutes";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
                 <Route key={index} path={route.path} element={route.element}/>
               ))}
             </Route>
-            <Route>
+            <Route element={<PublicRoutes />}>
               {publicRoutes.map((route, index) => (
                 <Route key={index} path={route.path} element={route.element}/>
               ))}
