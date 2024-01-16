@@ -1,4 +1,5 @@
 .new-chat-menu {
+  max-height: 65%;
   .new-chat-title{
     display: flex;
     justify-content: center;
@@ -11,6 +12,18 @@
     input {
       padding-top: 2px;
       padding-bottom: 2px;
+    }
+  }
+  .new-chat-item{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    .new-chat-item-avatar{
+      margin-right: 10px;
+    }
+    .new-chat-user-name{
+      font-size: 14px;
     }
   }
 }

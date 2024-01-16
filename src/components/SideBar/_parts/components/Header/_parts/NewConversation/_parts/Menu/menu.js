@@ -1,6 +1,7 @@
 import {Box, Input, InputAdornment, Menu, MenuItem, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {useState} from "react";
+import Avatar from '@mui/material/Avatar';
 import './menu.scss';
 
 const options = [
@@ -19,10 +20,41 @@ const options = [
   'Triton',
   'Umbriel',
 ];
+const users = [
+  {
+    id: 1,
+    name: 'John Doe',
+  },
+  {
+    id: 2,
+    name: 'Foo Bar',
+  },
+  {
+    id: 3,
+    name: 'Baz Qux'
+  },
+  {
+    id: 4,
+    name: 'Lorem Ipsum'
+  },
+  {
+    id: 5,
+    name: 'Dolor Sit'
+  },
+  {
+    id: 6,
+    name: 'Amet Consectetur'
+  },
+  {
+    id: 7,
+    name: 'Adipiscing Elit'
+  }
+
+];
 export default function NewConversationMenu({ showMenu, setShowMenu, anchorElement }) {
 
   const style = {
-    width: "25%",
+    width: "20%",
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -60,9 +92,12 @@ export default function NewConversationMenu({ showMenu, setShowMenu, anchorEleme
             </InputAdornment>
           }
         />
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={closeMenu}>
-            {option}
+        {users.map((user) => (
+          <MenuItem key={user.id} onClick={closeMenu}>
+            <div className="new-chat-item">
+              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className="new-chat-item-avatar" />
+              <span className="new-chat-user-name">{user.name}</span>
+            </div>
           </MenuItem>
         ))}
       </Box>
