@@ -52,6 +52,12 @@ const users = [
 
 ];
 export default function NewConversationMenu({ showMenu, setShowMenu, anchorElement }) {
+  const [search, setSearch] = useState('');
+
+  // Filter users based on the search input
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   const style = {
     width: "20%",
@@ -91,8 +97,10 @@ export default function NewConversationMenu({ showMenu, setShowMenu, anchorEleme
               <SearchIcon />
             </InputAdornment>
           }
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
         />
-        {users.map((user) => (
+        {filteredUsers.map((user) => (
           <MenuItem key={user.id} onClick={closeMenu}>
             <div className="new-chat-item">
               <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className="new-chat-item-avatar" />
