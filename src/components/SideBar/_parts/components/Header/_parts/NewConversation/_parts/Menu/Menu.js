@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {useState} from "react";
 import Avatar from '@mui/material/Avatar';
 import './menu.scss';
+import {useSelector} from "react-redux";
 
 const options = [
   'None',
@@ -53,10 +54,11 @@ const users = [
 ];
 export default function NewConversationMenu({ showMenu, setShowMenu, anchorElement }) {
   const [search, setSearch] = useState('');
+  const allUsers = useSelector(state => state.auth.allUsers);
 
   // Filter users based on the search input
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(search.toLowerCase())
+  const filteredUsers = allUsers?.filter(user =>
+    user.username.toLowerCase().includes(search.toLowerCase())
   );
 
   const style = {
@@ -101,10 +103,10 @@ export default function NewConversationMenu({ showMenu, setShowMenu, anchorEleme
           value={search}
         />
         {filteredUsers.map((user) => (
-          <MenuItem key={user.id} onClick={closeMenu}>
+          <MenuItem key={user._id} onClick={closeMenu}>
             <div className="new-chat-item">
               <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className="new-chat-item-avatar" />
-              <span className="new-chat-user-name">{user.name}</span>
+              <span className="new-chat-user-name">{user.username}</span>
             </div>
           </MenuItem>
         ))}
