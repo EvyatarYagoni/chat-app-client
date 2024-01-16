@@ -2,9 +2,8 @@ import './NewConversation.scss';
 import MessageRoundedIcon from "@mui/icons-material/MessageRounded";
 import {IconButton} from "@mui/material";
 import {useState} from "react";
-import NewConversationModal from "./_parts/Menu/menu";
 import {If, Then} from "react-if";
-import NewConversationMenu from "./_parts/Menu/menu";
+import NewConversationMenu from "./_parts/Menu/Menu";
 
 
 
