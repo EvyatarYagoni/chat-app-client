@@ -1,0 +1,16 @@
+.new-chat-menu {
+  .new-chat-title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .new-chat-input{
+    border: 1px solid #bab4b452;
+    border-radius: 5px;
+    padding-left: 3px;
+    input {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+  }
+}
