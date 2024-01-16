@@ -9,11 +9,11 @@ const ProtectedRoutes = () => {
 
   const accessToken = localStorage.getItem('accessToken');
 
-  // useEffect(() => {
-  //   if (!accessToken) {
-  //     return navigate(APP_ROUTES.LOGIN);
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (!accessToken) {
+      return navigate(APP_ROUTES.LOGIN);
+    }
+  }, [user]);
 
   return accessToken ? <Outlet /> : <Navigate to={APP_ROUTES.LOGIN} />;
 };
