@@ -1,8 +1,9 @@
 import './Login.scss';
 import Paper from "@mui/material/Paper";
-import {AccountCircle} from "@mui/icons-material";
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
+import axiosInstance  from "../../config/axios/axiosInstance";
+
 
 import {
     Box,
@@ -11,9 +12,9 @@ import {
     TextField,
     ThemeProvider
 } from "@mui/material";
-import {useState} from "react";
-import axios from "axios";
-import {Link} from "react-router-dom";
+import { useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {APP_ROUTES} from "../../utils/constants";
 
 const theme = createTheme({
     palette: {
@@ -27,16 +28,26 @@ const theme = createTheme({
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const loginHandler = async () => {
+    const loginHandler = async (event) => {
         try {
-            return await axios.post(`${process.env.REACT_APP_SERVER_API_URL}/auth/login`, {
+            event.preventDefault();
+            const response = await axiosInstance.post('/auth/login', {
                 email: email,
                 password: password
             });
+
+            saveTokenOnLocalStorage(response.data.accessToken);
+
+            return navigate(APP_ROUTES.HOME);
         }  catch (err) {
             console.log(err);
         }
+    }
+
+    const saveTokenOnLocalStorage = (accessToken) => {
+        localStorage.setItem('accessToken', accessToken);
     }
 
     return (

@@ -4,11 +4,7 @@ import Login from "../components/Login/Login";
 import Signup from "../components/Signup/Signup";
 
 
-const routes= [
-    {
-        path: '/',
-        element: <Home />,
-    },
+const publicRoutes = [
     {
         path: '/login',
         element: <Login />,
@@ -18,13 +14,20 @@ const routes= [
         element: <Signup />,
     },
     {
-        path: '/about',
-        element: <About />,
-    },
-    {
         path: '/*',
         element: <h1>404</h1>,
     },
 ];
 
-export default routes;
+const protectedRoutes= [
+    {
+        path: '/',
+        element: <Home />,
+    },
+    {
+        path: '/about',
+        element: <About />,
+    }
+];
+
+export {publicRoutes, protectedRoutes};

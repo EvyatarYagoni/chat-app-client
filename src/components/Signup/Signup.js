@@ -3,6 +3,9 @@ import Paper from "@mui/material/Paper";
 import {AccountCircle} from "@mui/icons-material";
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
+import {useNavigate} from "react-router-dom";
+import axiosInstance  from "../../config/axios/axiosInstance";
+
 
 import {
   Box,
@@ -11,9 +14,9 @@ import {
   TextField,
   ThemeProvider
 } from "@mui/material";
-import {useState} from "react";
-import axios from "axios";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const theme = createTheme({
   palette: {
@@ -28,17 +31,36 @@ export default function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const user = useSelector(state => state.auth.user);
+  const accessToken = useSelector(state => state.auth.accessToken);
+
 
   const signupHandler = async () => {
     try {
-      return await axios.post(`${process.env.REACT_APP_SERVER_API_URL}/auth/signup`, {
+
+      await axiosInstance.post('/auth/signup', {
+        username: username,
         email: email,
         password: password
       });
+
+      return redirectToHomePage();
+
     }  catch (err) {
       console.log(err);
     }
   }
+
+  const redirectToHomePage = () => {
+    navigate('/');
+  }
+
+  useEffect(() => {
+    if (user && accessToken) {
+      redirectToHomePage();
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,8 +76,8 @@ export default function Signup() {
                 fullWidth
                 label="username"
                 variant="standard"
-                value={email}
-                type={'username'}
+                value={username}
+                type='text'
                 color='ochre'
                 onChange={(e) => setUsername(e.target.value)}
               />
